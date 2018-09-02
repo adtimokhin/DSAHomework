@@ -1,5 +1,7 @@
 package ru.adtimokhin.lesson2;
-
+/*
+* Создано adtimokhin
+* */
 public class Second {
     public static void main(String args[]) {
 //        int[] arr; // int arr[];
