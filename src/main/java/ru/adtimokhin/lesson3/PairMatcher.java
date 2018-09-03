@@ -23,11 +23,17 @@ public class PairMatcher {
     private static final int FIGURE_BRACKET_CLOSE = 125;//'}'
     private static final int SQUARE_BRACKET_OPEN = 91;//'['
     private static final int SQUARE_BRACKET_CLOSE = 93;//']'
+
     private static int num = 0;
     private String name = "PairMatcher";
     private int max = 0;
 
-    private enum TYPE {round, angle, figure, square}
+    /**
+     * Enum for finding identical type of bracket at the method {@link #match(TYPE type, int lastTaken)}
+     **/
+    private enum TYPE {
+        round, angle, figure, square
+    }
 
     private Map<Integer, Integer> characterMap = new HashMap<Integer, Integer>();
     private Stack stack = new Stack(20);
@@ -88,10 +94,10 @@ public class PairMatcher {
     }
 
     /**
-     * Method used at the end of PairMatcher's constructors for checking if stack
+     * Method used at the end of PairMatcher's constructors for checking if {@linkplain #stack} is empty
      *
      * @throws RuntimeException
-     * @see Stack is empty
+     * @see Stack
      **/
     private void checkForErrors() {
         if (characterMap.size() > 0) {
@@ -104,7 +110,7 @@ public class PairMatcher {
     }
 
     /**
-     * Method check() runs through a stack to add elements into a map of brackets. If up-coming bracket is one of the opening, method match(TYPE type, int lastTaken) would be called.
+     * Method check() runs through a stack to add elements into a map of brackets. If up-coming bracket is one of the opening, method {@linkplain #match(TYPE, int)} would be called.
      *
      * @see Map
      * @see Stack
@@ -139,7 +145,15 @@ public class PairMatcher {
     }
 
     /**
-     * Method searches for **/
+     * Method searches for the closest to the opening symbol closing symbol of the same type.
+     *
+     * @param type      type of brackets this method would work with
+     * @param lastTaken key of opening bracket
+     * @throws RuntimeException
+     * @see Map
+     * @see java.util.Iterator used for searching this closest symbol.
+     * After symbol was found, information about it is printed into the console and those elenents are  going to be deleted from characterMap
+     **/
     private void match(TYPE type, int lastTaken) {
         int openingSymbol;
         switch (type) {

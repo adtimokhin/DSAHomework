@@ -6,6 +6,18 @@ import ru.adtimokhin.lesson2.Array;
  * Class Deque. Created by adtimokhin. 03.09.2018 (09:32)
  **/
 public class Deque {
+    /**
+     * Class Deque is a simpler version of java.util.Deque
+     * @see java.util.Deque
+     * Class ru.adtimokhin.lesson2.Deque is a usual deque, to which you can add/remove elements from both ends.
+     **/
+
+    /**
+     * Two arrays, which realising functions of a queue. In the work with them user won't see huge difference as if those were two queues
+     *
+     * @see Array
+     * @see java.util.Queue
+     **/
     private Array topArray;
     private Array bottomArray;
 
@@ -48,34 +60,40 @@ public class Deque {
             bottomArray.set(i - 1, values[values.length - i]);
         }
     }
+
     /**
      * Method peekTop() takes topArray[0] and returns it. If topArray is empty, bottomArray[0] would be returned ( which is at the beginning of bottomArray)
      * Selected element would not be deleted
      * If both topArray and bottomArray are empty,
+     *
      * @throws RuntimeException
-     * */
+     */
     public int peekTop() {
         if (topArray.length() != 0) return topArray.get(0);
         else if (bottomArray.length() != 0) return bottomArray.get(0);
         else throw new RuntimeException("Deque is empty");
     }
+
     /**
      * Method peekBottom() takes bottomArray[bottomArray.length - 1] and returns it. If bottomArray is empty, topArray[topArray.length -1] would be returned ( which is at the beginning of bottomArray)
      * Selected element would not be deleted
      * If both topArray and bottomArray are empty,
+     *
      * @throws RuntimeException
-     * */
+     */
     public int peekBottom() {
         if (bottomArray.length() != 0) return bottomArray.getLast();
         else if (topArray.length() != 0) return topArray.getLast();
         else throw new RuntimeException("Deque is empty");
     }
+
     /**
      * Method popTop() takes topArray[0] and returns it. If topArray is empty, bottomArray[0] would be returned ( which is at the beginning of bottomArray)
      * Selected element would  be deleted
      * If both topArray and bottomArray are empty,
+     *
      * @throws RuntimeException
-     * */
+     */
     public int popTop() {
         if (topArray.length() != 0) {
             int temp = topArray.get(0);
@@ -87,12 +105,14 @@ public class Deque {
             return temp;
         } else throw new RuntimeException("Deque is empty");
     }
+
     /**
      * Method popBottom() takes bottomArray[bottomArray.length - 1] and returns it. If bottomArray is empty, topArray[topArray.length -1] would be returned ( which is at the beginning of bottomArray)
      * Selected element would  be deleted
      * If both topArray and bottomArray are empty,
+     *
      * @throws RuntimeException
-     * */
+     */
     public int popBottom() {
         if (bottomArray.length() != 0) {
             int temp = bottomArray.getLast();
@@ -104,21 +124,25 @@ public class Deque {
             return temp;
         } else throw new RuntimeException("Deque is empty");
     }
+
     /**
      * Method removeTop() would delete topArray[0]. If topArray is empty, the method would delete bottomArray[0]
      * If both topArray and bottomArray are empty,
+     *
      * @throws RuntimeException
-     * **/
+     **/
     public void removeTop() {
         if (topArray.length() != 0) topArray.delete(0);
         else if (bottomArray.length() != 0) bottomArray.delete(0);
         else throw new RuntimeException("Deque is empty");
     }
+
     /**
      * Method removeBottom() would delete bottomArray[bottom.length -1]. If bottomArray is empty, the method would delete  topArray[topArray.length -1]
      * If both topArray and bottomArray are empty,
+     *
      * @throws RuntimeException
-     * **/
+     **/
     public void removeBottom() {
         if (bottomArray.length() != 0) bottomArray.remove();
         else if (topArray.length() != 0) topArray.remove();
