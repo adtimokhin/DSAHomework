@@ -86,7 +86,8 @@ public class ReverseReader {
                 System.out.print(sym);
             } else {
                 try {
-                    bos.write((char)stack.pop());
+                    bos.write(stack.pop());
+                    bos.flush();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

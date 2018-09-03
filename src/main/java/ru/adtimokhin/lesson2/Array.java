@@ -148,7 +148,7 @@ public class Array {
             }
         }
         isSorted = true;
-        System.out.println("SortBubble: count = " + count);
+        // System.out.println("SortBubble: count = " + count);
         // сложность : O(n^2)
     }
 
@@ -233,5 +233,9 @@ public class Array {
                 return b.append(']').toString();
             b.append(", ");
         }
+    }
+
+    public boolean isEmpty() {
+        return size==0;
     }
 }

@@ -38,7 +38,7 @@ public class Queue {
                 System.arraycopy(queue, head,
                         temp, size - (queue.length - head),
                         queue.length - head - 1);
-                head = size - head - 1;
+                        head = size - head - 1;
             }
             queue = temp;
         }
