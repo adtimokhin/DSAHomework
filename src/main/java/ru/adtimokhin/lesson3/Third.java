@@ -8,5 +8,8 @@ public class Third {
         //1.
         new PairMatcher(new File("hw3.txt"));
         new PairMatcher("(,<><><>)");
+        //2.
+       ReverseReader rr = new ReverseReader(new File("Write.txt"), true,null );
+       rr.addText("der text oil");
     }
 }
