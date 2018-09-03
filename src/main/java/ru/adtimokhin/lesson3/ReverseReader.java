@@ -123,7 +123,7 @@ public class ReverseReader {
         dis.close();
         bos.close();
     }
-    public String readFromCurrentFile() throws IOException {
+    public void readFromCurrentFile() throws IOException {
         if(file==null)throw new RuntimeException("This ReverseReader doesn't write into a File");
         else {
             DataInputStream dis = new DataInputStream(new FileInputStream(file));
@@ -133,6 +133,5 @@ public class ReverseReader {
                 val = dis.read();
             }
         }
-        return "opa!";
     }
 }

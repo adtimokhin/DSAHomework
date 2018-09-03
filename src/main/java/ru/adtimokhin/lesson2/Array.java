@@ -34,6 +34,21 @@ public class Array {
             throw new ArrayIndexOutOfBoundsException("WTF!");
         return arr[index];
     }
+    public int getLast(){
+        return arr[size-1];
+    }
+    public void moveFowardBy(int units){
+        for (int i = 0; i < units; i++) {
+            int temp[] = new int[size+1];
+            for (int j = 0; j < temp.length; j++) {
+                if(j==0)temp[j]=j;
+                else temp[j] = arr[j-1];
+            }
+           arr = new int[temp.length];
+            System.arraycopy(temp,0,arr,0,temp.length);
+            size = arr.length;
+        }
+    }
 
     public void set(int index, int value) {
         if (index < 0 || index >= size)
