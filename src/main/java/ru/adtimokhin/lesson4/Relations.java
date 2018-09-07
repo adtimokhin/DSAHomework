@@ -22,20 +22,21 @@ public class Relations {
         drl.insert(new Cat(1, "Barsik"));
         drl.insert(new Cat(2, "Murzik"));
         drl.insert(new Cat(4, "Kissik"));
-//        System.out.println(drl);
-//        System.out.println(drl.remove());
-        drl.remove();
-//        System.out.println(drl);
+   /*     System.out.println(drl);
+        System.out.println(drl.delete());
+        System.out.println(drl);
         System.out.println(drl.contains(new Cat(2, "Murzik")));
       System.out.println(drl.delete("Barsik"));
-        System.out.println(drl);
-/*
+        System.out.println(drl);*/
+        while (drl.hasNext()){
+            System.out.println(drl);
+        }
         // Map iterator
         HashMap<String, String> map = new HashMap<>();
         Set<Map.Entry<String, String>> set = map.entrySet();
         Iterator<Map.Entry<String, String>> iter = set.iterator();
         while (iter.hasNext()) {
             System.out.println(iter.next().getKey() + iter.next().getValue());
-        }*/
+        }
     }
 }

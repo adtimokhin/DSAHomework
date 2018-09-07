@@ -38,7 +38,7 @@ public class RelatedList<T> {
         head = n;
     }
 
-    public T remove() {
+    public T delete() {
         if (isEmpty())
             return null;
         T temp = head.c;

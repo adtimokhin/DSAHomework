@@ -1,12 +1,47 @@
 package ru.adtimokhin.lesson4;
 
+import java.util.Iterator;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 /**
  * Class DoubleRelatedList. Created by adtimokhin. 05.09.2018 (11:32)
  **/
-public class DoubleRelatedList<T> extends RelatedList<T> {
+public class DoubleRelatedList<T> extends RelatedList<T> implements Iterator<T> {
     private int number =0;
+    private boolean theEnd = false;
+    @Override
+    public boolean hasNext() {
+        if(theEnd) {
+            theEnd = false;
+            iterator = head;
+            return false;
+
+        }
+       T current = next();
+        if(current == tail && head== iterator) theEnd =true;
+        return true;
+    }
+
+    @Override
+    public T next() {
+        Node<T> current = iterator;
+        iterator = iterator.next;
+        iterator.previous = current;
+        return (T) current;
+    }
+
+    @Override
+    public void remove() {
+        iterator.previous.next = iterator.next;
+        iterator.next.previous = iterator.previous;
+    }
+
+    @Override
+    public void forEachRemaining(Consumer<? super T> action) {
+     action.accept(delete());
+    }
+
     private class Node<T>{
         T c;
         Node<T> next;
@@ -28,9 +63,11 @@ public class DoubleRelatedList<T> extends RelatedList<T> {
     }
     private Node<T> head;
     private Node<T> tail;
+    private Node<T> iterator;
     public DoubleRelatedList() {
     head =null;
     tail =null;
+    iterator = null;
     }
 
     @Override
@@ -53,11 +90,13 @@ public class DoubleRelatedList<T> extends RelatedList<T> {
             head = n;
             setHeadTail();
         }
+        iterator = head;
+        iterator.previous = tail;
+        iterator.next = head.next;
         number++;
     }
 
-    @Override
-    public T remove() {
+    public T delete() {
         T c = head.c;
         head = head.next;
         setHeadTail();
@@ -87,7 +126,6 @@ public class DoubleRelatedList<T> extends RelatedList<T> {
         T temp = current.c;
         previous.next = current.next;
         previous.next.previous = current.previous;
-        current = null;
         number--;
         return temp;
     }
@@ -98,9 +136,8 @@ public class DoubleRelatedList<T> extends RelatedList<T> {
 
     @Override
     public String toString() {
-        System.out.println(number);
         int number = 0;
-        if (head == null) return "[]";
+        if (this.number == 0) return "[]";
         Node<T> current = head;
         StringBuilder sb = new StringBuilder("[");
         while (number != this.number) {
