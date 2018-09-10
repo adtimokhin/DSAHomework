@@ -10,7 +10,7 @@ public class Third {
         //1.
         new PairMatcher(new File("hw3.txt"));
         new PairMatcher("(,<><><>)");
-        /*//2.
+        //2.
         ReverseReader rr = new ReverseReader(new File("Write.txt"), true, new File("part3.txt"));
         rr.addText("der text oil");
         rr.readFromCurrentFile();
@@ -29,6 +29,6 @@ public class Third {
         pq.pop();
         pq.add(-1,-1);
         pq.pop();
-        System.out.println(pq);*/
+        System.out.println(pq);
     }
 }
